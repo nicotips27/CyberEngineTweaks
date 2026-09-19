@@ -90,10 +90,10 @@ void Bindings::OnUpdate()
     ImGui::Separator();
 
     const auto itemWidth = GetAlignedItemWidth(2);
-    if (ImGui::Button("Save", ImVec2(itemWidth, 0)))
+    if (ImGui::Button("Guardar", ImVec2(itemWidth, 0)))
         Save();
     ImGui::SameLine();
-    if (ImGui::Button("Reset changes", ImVec2(itemWidth, 0)))
+    if (ImGui::Button("Restablecer cambios", ImVec2(itemWidth, 0)))
         ResetChanges();
 }
 
@@ -165,17 +165,17 @@ bool Bindings::FirstTimeSetup()
 
     m_vm.BlockDraw(true);
 
-    ImGui::OpenPopup("CET First Time Setup");
+    ImGui::OpenPopup("Configuración Inicial CET");
 
-    if (ImGui::BeginPopupModal("CET First Time Setup", nullptr, ImGuiWindowFlags_AlwaysAutoResize))
+    if (ImGui::BeginPopupModal("Configuración Inicial CET", nullptr, ImGuiWindowFlags_AlwaysAutoResize))
     {
-        const auto shorterTextSz{ImGui::CalcTextSize("Combo can be composed from up to 4 keys.").x};
-        const auto longerTextSz{ImGui::CalcTextSize("Please, bind some key combination for toggling overlay!").x};
+        const auto shorterTextSz{ImGui::CalcTextSize("La combinación puede tener hasta 4 teclas.").x};
+        const auto longerTextSz{ImGui::CalcTextSize("¡Vincula una combinación de teclas para alternar la superposición!").x};
         const auto diffTextSz{longerTextSz - shorterTextSz};
 
-        ImGui::TextUnformatted("Please, bind some key combination for toggling overlay!");
+        ImGui::TextUnformatted("¡Vincula una combinación de teclas para alternar la superposición!");
         ImGui::SetCursorPosX(diffTextSz / 2);
-        ImGui::TextUnformatted("Combo can be composed from up to 4 keys.");
+        ImGui::TextUnformatted("La combinación puede tener hasta 4 teclas.");
         ImGui::Separator();
 
         auto& [cetBinds, cetHotkeys] = m_vkBindInfos.at(s_overlayToggleModBind.ModName);
@@ -471,11 +471,11 @@ void Bindings::UpdateAndDrawModBindings(const std::string& acModName, TiltedPhoq
     {
         if (!aSimplified)
         {
-            ImGui::SetCursorPosX(ImGui::GetCursorPosX() + GetCenteredOffsetForText("Hotkeys"));
-            ImGui::TextUnformatted("Hotkeys");
+            ImGui::SetCursorPosX(ImGui::GetCursorPosX() + GetCenteredOffsetForText("Teclas rápidas"));
+            ImGui::TextUnformatted("Teclas rápidas");
             if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled))
-                ImGui::SetTooltip("Hotkeys react after assigned key combination has been pressed and subsequently "
-                                  "released. You can bind up to 4 key combination to them.");
+                ImGui::SetTooltip("Las teclas rápidas reaccionan tras presionar y soltar la combinación asignada. "
+                                  "Puedes vincular hasta 4 combinaciones.");
             ImGui::Separator();
         }
 
@@ -495,10 +495,10 @@ void Bindings::UpdateAndDrawModBindings(const std::string& acModName, TiltedPhoq
     {
         if (!aSimplified)
         {
-            ImGui::SetCursorPosX(ImGui::GetCursorPosX() + GetCenteredOffsetForText("Inputs"));
-            ImGui::TextUnformatted("Inputs");
+            ImGui::SetCursorPosX(ImGui::GetCursorPosX() + GetCenteredOffsetForText("Entradas"));
+            ImGui::TextUnformatted("Entradas");
             if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled))
-                ImGui::SetTooltip("Inputs react when key is pressed and released. You can bind single key to them.");
+                ImGui::SetTooltip("Las entradas reaccionan al presionar y soltar la tecla. Puedes vincular una tecla individual.");
             ImGui::Separator();
         }
 

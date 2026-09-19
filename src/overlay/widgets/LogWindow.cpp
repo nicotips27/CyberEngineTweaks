@@ -16,7 +16,7 @@ void LogWindow::Draw(const ImVec2& size)
 {
     const auto itemWidth = GetAlignedItemWidth(2);
 
-    if (ImGui::Button("Clear output", ImVec2(itemWidth, 0)))
+    if (ImGui::Button("Limpiar salida", ImVec2(itemWidth, 0)))
     {
         m_normalizedWidth = -1.0f;
         std::lock_guard _{m_lock};
@@ -24,7 +24,7 @@ void LogWindow::Draw(const ImVec2& size)
         m_lines.clear();
     }
     ImGui::SameLine();
-    ImGui::Checkbox("Auto-scroll", &m_shouldScroll);
+    ImGui::Checkbox("Auto-desplazar", &m_shouldScroll);
 
     const auto& style = ImGui::GetStyle();
 

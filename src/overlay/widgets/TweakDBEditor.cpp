@@ -133,7 +133,7 @@ void TweakDBEditor::OnUpdate()
     // LuaVM is initialized after TweakDB, let's wait for it
     if (!m_vm.IsInitialized())
     {
-        ImGui::TextUnformatted("TweakDB is not initialized yet");
+        ImGui::TextUnformatted("TweakDB aún no está inicializado");
         return;
     }
 
@@ -141,23 +141,23 @@ void TweakDBEditor::OnUpdate()
     {
         RebuildCache();
 
-        ImGui::TextUnformatted("Rebuilding cache...");
+        ImGui::TextUnformatted("Reconstruyendo caché...");
         return;
     }
 
     if (ImGui::BeginTabBar("TweakDBEditor-Bar"))
     {
-        if (ImGui::BeginTabItem("Records"))
+        if (ImGui::BeginTabItem("Registros"))
         {
-            ImGui::BeginChild("Records");
+            ImGui::BeginChild("Registros");
             DrawRecordsTab();
             ImGui::EndChild();
             ImGui::EndTabItem();
         }
 
-        if (ImGui::BeginTabItem("Queries"))
+        if (ImGui::BeginTabItem("Consultas"))
         {
-            ImGui::BeginChild("Queries");
+            ImGui::BeginChild("Consultas");
             DrawQueriesTab();
             ImGui::EndChild();
             ImGui::EndTabItem();
@@ -171,9 +171,9 @@ void TweakDBEditor::OnUpdate()
             ImGui::EndTabItem();
         }
 
-        if (ImGui::BeginTabItem("Advanced"))
+        if (ImGui::BeginTabItem("Avanzado"))
         {
-            ImGui::BeginChild("Advanced");
+            ImGui::BeginChild("Avanzado");
             DrawAdvancedTab();
             ImGui::EndChild();
             ImGui::EndTabItem();
@@ -633,7 +633,7 @@ bool TweakDBEditor::DrawFlat(RED4ext::TweakDBID aDBID, RED4ext::CStackType& aSta
         return DrawFlatInt32(aDBID, aStackType, aReadOnly);
 
     const auto typeName = aStackType.type->GetName();
-    ImGui::Text("unsupported type: %s", typeName.ToString());
+    ImGui::Text("tipo no soportado: %s", typeName.ToString());
     return false;
 }
 
@@ -668,7 +668,7 @@ bool TweakDBEditor::DrawFlatArray(RED4ext::TweakDBID aDBID, RED4ext::CStackType&
     uint32_t arraySize = pArrayType->GetLength(arrayInstance);
     if (!aCollapsable || ImGui::TreeNode("", "[%s] %u items", arrayTypeName.ToString(), arraySize))
     {
-        if (!aReadOnly && ImGui::Button("clear"))
+        if (!aReadOnly && ImGui::Button("limpiar"))
         {
             pArrayType->Resize(arrayInstance, 0);
             arraySize = 0;
@@ -679,7 +679,7 @@ bool TweakDBEditor::DrawFlatArray(RED4ext::TweakDBID aDBID, RED4ext::CStackType&
             uint64_t arrayKey = aDBID.value & 0xFFFFFFFFFF;
             if (!isCached)
             {
-                if (ImGui::Button("edit"))
+                if (ImGui::Button("editar"))
                 {
                     auto* allocator = pArrayType->GetAllocator();
                     auto result = allocator->AllocAligned(pArrayType->GetSize(), pArrayType->GetAlignment());
@@ -691,7 +691,7 @@ bool TweakDBEditor::DrawFlatArray(RED4ext::TweakDBID aDBID, RED4ext::CStackType&
             else
             {
                 ImGui::SameLine();
-                if (ImGui::Button("cancel"))
+                if (ImGui::Button("cancelar"))
                 {
                     pArrayType->Destruct(arrayInstance);
                     pArrayType->GetAllocator()->Free(arrayInstance);
@@ -704,7 +704,7 @@ bool TweakDBEditor::DrawFlatArray(RED4ext::TweakDBID aDBID, RED4ext::CStackType&
                     isCached = false;
                 }
                 ImGui::SameLine();
-                if (ImGui::Button("save"))
+                if (ImGui::Button("guardar"))
                 {
                     const RED4ext::CStackType newStackType(aStackType.type, arrayInstance);
                     isModified = TweakDB::InternalSetFlat(aDBID, newStackType);
@@ -768,7 +768,7 @@ bool TweakDBEditor::DrawFlatArray(RED4ext::TweakDBID aDBID, RED4ext::CStackType&
 
             ImGui::TableNextRow();
             ImGui::TableNextColumn();
-            if (!aReadOnly && ImGui::Button("add new"))
+            if (!aReadOnly && ImGui::Button("añadir nuevo"))
             {
                 pArrayType->InsertAt(arrayInstance, arraySize);
                 pArrayInnerType->Construct(pArrayType->GetElement(arrayInstance, arraySize));
@@ -1037,7 +1037,7 @@ bool TweakDBEditor::DrawFlatColor(RED4ext::TweakDBID aDBID, RED4ext::CStackType&
     rgba[3] = pColor->Alpha / 255.0f;
 
     aReadOnly = true;
-    ImGui::TextUnformatted("'Color' is not supported yet");
+    ImGui::TextUnformatted("'Color' aún no es compatible");
     ImGui::SameLine();
 
     const int32_t flags = aReadOnly ? ImGuiColorEditFlags_NoInputs : ImGuiColorEditFlags_None;
@@ -1073,7 +1073,7 @@ bool TweakDBEditor::DrawFlatLocKeyWrapper(RED4ext::TweakDBID aDBID, RED4ext::CSt
 {
     const auto* pLocKey = static_cast<RED4ext::gamedataLocKeyWrapper*>(aStackType.value);
 
-    ImGui::TextUnformatted("This is a LocalizationKey");
+    ImGui::TextUnformatted("Esta es una Clave de Localización");
     ImGui::TextUnformatted("Game.GetLocalizedTextByKey(...)");
 
     uint64_t key = pLocKey->primaryKey;
@@ -1128,7 +1128,7 @@ bool TweakDBEditor::DrawFlatResourceAsyncRef(RED4ext::TweakDBID aDBID, RED4ext::
             static int resourcesCount = 0;
             static char comboSearchStr[256]{};
             ImGui::SetNextItemWidth(-FLT_MIN);
-            if (ImGui::InputTextWithHint("##dropdownSearch", "Search", comboSearchStr, sizeof(comboSearchStr)))
+            if (ImGui::InputTextWithHint("##dropdownSearch", "Buscar", comboSearchStr, sizeof(comboSearchStr)))
             {
                 searchTimer = c_searchDelay;
             }
@@ -1231,7 +1231,7 @@ bool TweakDBEditor::DrawFlatCName(RED4ext::TweakDBID aDBID, RED4ext::CStackType&
 {
     const auto* pCName = static_cast<RED4ext::CName*>(aStackType.value);
 
-    ImGui::TextUnformatted("Game is expecting specific values.");
+    ImGui::TextUnformatted("El juego espera valores específicos.");
     // Is it worth it to implement a dropdown like DrawTweakDBID?
 
     RED4ext::CName newCName;
@@ -1384,7 +1384,7 @@ void TweakDBEditor::DrawRecordsTab()
     static float searchTimer = 0.0f;
     ImGui::SetNextItemWidth(
         -(ImGui::GetFrameHeight() + ImGui::CalcTextSize("Regex").x + ImGui::GetStyle().ItemSpacing.x + ImGui::GetStyle().ItemInnerSpacing.x + ImGui::GetStyle().FramePadding.x));
-    if (ImGui::InputTextWithHint("##search", "Search", s_recordsFilterBuffer, sizeof(s_recordsFilterBuffer)))
+    if (ImGui::InputTextWithHint("##search", "Buscar", s_recordsFilterBuffer, sizeof(s_recordsFilterBuffer)))
     {
         searchTimer = c_searchDelay;
     }
@@ -1510,7 +1510,7 @@ void TweakDBEditor::DrawFlatsTab()
     static float searchTimer = 0.0f;
     ImGui::SetNextItemWidth(
         -(ImGui::GetFrameHeight() + ImGui::CalcTextSize("Regex").x + ImGui::GetStyle().ItemSpacing.x + ImGui::GetStyle().ItemInnerSpacing.x + ImGui::GetStyle().FramePadding.x));
-    if (ImGui::InputTextWithHint("##search", "Search", s_flatsFilterBuffer, sizeof(s_flatsFilterBuffer)))
+    if (ImGui::InputTextWithHint("##search", "Buscar", s_flatsFilterBuffer, sizeof(s_flatsFilterBuffer)))
     {
         searchTimer = c_searchDelay;
     }
@@ -1623,20 +1623,20 @@ void TweakDBEditor::DrawAdvancedTab()
             statusTimer = 2.5f;
         };
 
-        ImGui::InputText("Record name", recordName, sizeof(recordName));
+        ImGui::InputText("Nombre del registro", recordName, sizeof(recordName));
 
-        if (ImGui::Button("Delete Record"))
+        if (ImGui::Button("Eliminar registro"))
         {
             if (TweakDB::InternalDeleteRecord(RED4ext::TweakDBID(recordName), spdlog::get("scripting")))
-                SetStatus("Success!");
+                SetStatus("¡Éxito!");
             else
-                SetStatus("Failed. check console!");
+                SetStatus("Falló. ¡revisa la consola!");
         }
 
-        if (ImGui::BeginCombo("Record type to create", recordTypeName.ToString(), ImGuiComboFlags_HeightLargest))
+        if (ImGui::BeginCombo("Tipo de registro a crear", recordTypeName.ToString(), ImGuiComboFlags_HeightLargest))
         {
             ImGui::SetNextItemWidth(-FLT_MIN);
-            ImGui::InputTextWithHint("##dropdownSearch", "Search", comboSearchBuffer, sizeof(comboSearchBuffer));
+            ImGui::InputTextWithHint("##dropdownSearch", "Buscar", comboSearchBuffer, sizeof(comboSearchBuffer));
             if (ImGui::BeginChild("##dropdownScroll", ImVec2(0, g_comboDropdownHeight)))
             {
                 for (const auto& recordGroup : m_cachedRecords)
@@ -1663,10 +1663,10 @@ void TweakDBEditor::DrawAdvancedTab()
             ImGui::EndCombo();
         }
 
-        if (ImGui::Button("Create record"))
+        if (ImGui::Button("Crear registro"))
         {
             if (TweakDB::InternalCreateRecord(recordName, recordTypeName.ToString(), spdlog::get("scripting")))
-                SetStatus("Success!");
+                SetStatus("¡Éxito!");
             else
                 SetStatus("Failed. check console!");
         }

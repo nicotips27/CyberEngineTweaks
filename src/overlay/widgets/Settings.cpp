@@ -51,56 +51,51 @@ void Settings::OnUpdate()
     if (ImGui::BeginChild(ImGui::GetID("Settings"), frameSize))
     {
         m_madeChanges = false;
-        if (ImGui::CollapsingHeader("Patches", ImGuiTreeNodeFlags_DefaultOpen))
+        if (ImGui::CollapsingHeader("Parches", ImGuiTreeNodeFlags_DefaultOpen))
         {
-            ImGui::TreePush("##PATCHES");
-            if (ImGui::BeginTable("##SETTINGS_PATCHES", 2, ImGuiTableFlags_Sortable | ImGuiTableFlags_SizingStretchSame, ImVec2(-ImGui::GetStyle().IndentSpacing, 0)))
+            ImGui::TreePush("##PARCHES");
+            if (ImGui::BeginTable("##AJUSTES_PARCHES", 2, ImGuiTableFlags_Sortable | ImGuiTableFlags_SizingStretchSame, ImVec2(-ImGui::GetStyle().IndentSpacing, 0)))
             {
                 const auto& patchesSettings = m_options.Patches;
                 UpdateAndDrawSetting(
-                    "Disable Async Compute",
-                    "Disables async compute, this can give a boost on older GPUs like Nvidia 10xx series for example "
-                    "(requires restart to take effect).",
+                    "Desactivar Compute Asíncrono",
+                    "Desactiva el compute asíncrono, esto puede dar un impulso en GPUs antiguas como la serie Nvidia 10xx (requiere reinicio).",
                     m_patches.AsyncCompute, patchesSettings.AsyncCompute);
                 UpdateAndDrawSetting(
-                    "Disable Anti-aliasing", "Completely disables anti-aliasing (requires restart to take effect).", m_patches.Antialiasing, patchesSettings.Antialiasing);
+                    "Desactivar Antialiasing", "Desactiva completamente el antialiasing (requiere reinicio).", m_patches.Antialiasing, patchesSettings.Antialiasing);
                 UpdateAndDrawSetting(
-                    "Disable Vignette", "Disables vignetting along screen borders (requires restart to take effect).", m_patches.DisableVignette, patchesSettings.DisableVignette);
+                    "Desactivar Vigneteo", "Desactiva el vigneteo en los bordes de la pantalla (requiere reinicio).", m_patches.DisableVignette, patchesSettings.DisableVignette);
                 UpdateAndDrawSetting(
-                    "Disable Boundary Teleport", "Allows players to access out-of-bounds locations (requires restart to take effect).", m_patches.DisableBoundaryTeleport,
+                    "Desactivar Teletransporte de Límites", "Permite acceder a ubicaciones fuera de límites (requiere reinicio).", m_patches.DisableBoundaryTeleport,
                     patchesSettings.DisableBoundaryTeleport);
                 UpdateAndDrawSetting(
-                    "Disable V-Sync (Windows 7 only)", "Disables VSync on Windows 7 to bypass the 60 FPS limit (requires restart to take effect).", m_patches.DisableWin7Vsync,
+                    "Desactivar V-Sync (solo Windows 7)", "Desactiva VSync en Windows 7 para saltar el límite de 60 FPS (requiere reinicio).", m_patches.DisableWin7Vsync,
                     patchesSettings.DisableWin7Vsync);
                 
                 ImGui::EndTable();
             }
             ImGui::TreePop();
         }
-        if (ImGui::CollapsingHeader("CET Development Settings", ImGuiTreeNodeFlags_DefaultOpen))
+        if (ImGui::CollapsingHeader("Ajustes Desarrollo CET", ImGuiTreeNodeFlags_DefaultOpen))
         {
-            ImGui::TreePush("##DEV");
-            if (ImGui::BeginTable("##SETTINGS_DEV", 2, ImGuiTableFlags_Sortable | ImGuiTableFlags_SizingStretchSame, ImVec2(-ImGui::GetStyle().IndentSpacing, 0)))
+            ImGui::TreePush("##DESARROLLO");
+            if (ImGui::BeginTable("##AJUSTES_DESARROLLO", 2, ImGuiTableFlags_Sortable | ImGuiTableFlags_SizingStretchSame, ImVec2(-ImGui::GetStyle().IndentSpacing, 0)))
             {
                 const auto& developerSettings = m_options.Developer;
                 UpdateAndDrawSetting(
-                    "Remove Dead Bindings",
-                    "Removes all bindings which are no longer valid (disabling this could be useful when debugging mod "
-                    "issues).",
+                    "Eliminar Enlaces Muertos",
+                    "Elimina todos los enlaces que ya no son válidos (desactivar puede ser útil al depurar mods).",
                     m_developer.RemoveDeadBindings, developerSettings.RemoveDeadBindings);
                 UpdateAndDrawSetting(
-                    "Enable ImGui Assertions",
-                    "Enables all ImGui assertions, assertions will get logged into log file of whoever triggered the "
-                    "assertion (useful when debugging ImGui issues, should also be used to check mods before "
-                    "shipping!).",
+                    "Activar Aserciones ImGui",
+                    "Activa todas las aserciones de ImGui, se registrarán en el log (útil para depurar, verificar mods antes de publicar).",
                     m_developer.EnableImGuiAssertions, developerSettings.EnableImGuiAssertions);
                 UpdateAndDrawSetting(
-                    "Dump Game Options", "Dumps all game options into main log file (requires restart to take effect).", m_developer.DumpGameOptions,
+                    "Volcar Opciones del Juego", "Vuelca todas las opciones del juego al log principal (requiere reinicio).", m_developer.DumpGameOptions,
                     developerSettings.DumpGameOptions);
                 UpdateAndDrawSetting(
-                    "Enable JIT for Lua",
-                    "Enables JIT compiler for Lua VM, which may majorly speed up the mods. Disable it in case you experience issues as a troubleshooting step (requires restart to "
-                    "take effect).",
+                    "Activar JIT para Lua",
+                    "Activa compilador JIT para VM Lua, acelera mods. Desactiva si hay problemas (requiere reinicio).",
                     m_developer.EnableJIT, developerSettings.EnableJIT);
 
                 ImGui::EndTable();
@@ -113,13 +108,13 @@ void Settings::OnUpdate()
     ImGui::Separator();
 
     const auto itemWidth = GetAlignedItemWidth(3);
-    if (ImGui::Button("Load", ImVec2(itemWidth, 0)))
+    if (ImGui::Button("Cargar", ImVec2(itemWidth, 0)))
         Load();
     ImGui::SameLine();
-    if (ImGui::Button("Save", ImVec2(itemWidth, 0)))
+    if (ImGui::Button("Guardar", ImVec2(itemWidth, 0)))
         Save();
     ImGui::SameLine();
-    if (ImGui::Button("Defaults", ImVec2(itemWidth, 0)))
+    if (ImGui::Button("Predeterminados", ImVec2(itemWidth, 0)))
         ResetToDefaults();
 }
 
