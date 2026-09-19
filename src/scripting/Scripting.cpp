@@ -9,6 +9,7 @@
 #include "Texture.h"
 
 #include <CET.h>
+#include <fstream>
 #include <lsqlite3/lsqlite3.h>
 #include <reverse/Type.h>
 #include <reverse/SingletonReference.h>
@@ -303,7 +304,31 @@ void Scripting::Initialize()
             logger->info("Math Types:");
             logger->info("  Vector3/4, EulerAngles, Quaternion, CName, TweakDBID, ItemID, CRUID, LocKey");
             logger->info("");
+            logger->info("  trucos - Show all available cheats/tips");
+            logger->info("");
             logger->info("Type 'help(\"command\")' for detailed help on a specific command.");
+        }
+    };
+
+    globals["trucos"] = [this](sol::this_environment aThisEnv) -> void
+    {
+        const sol::environment cEnv = aThisEnv;
+        const auto logger = cEnv["__logger"].get<std::shared_ptr<spdlog::logger>>();
+
+        const auto cetRoot = m_paths.CETRoot();
+        const auto trucosPath = cetRoot / "Marketing" / "trucos.txt";
+
+        std::ifstream file(trucosPath);
+        if (!file.is_open())
+        {
+            logger->info("Could not open trucos.txt");
+            return;
+        }
+
+        std::string line;
+        while (std::getline(file, line))
+        {
+            logger->info("{}", line);
         }
     };
 
