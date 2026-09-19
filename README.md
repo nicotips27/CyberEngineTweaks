@@ -43,6 +43,19 @@ Estamos trabajando en añadir una colección de nuevos trucos y funcionalidades 
 
 ![Trucos Netrunner](https://raw.githubusercontent.com/nicotips27/CyberEngineTweaks/renombrado-v1.36.0/Marketing/capturas/trucos.png)
 
+### Comando `trucos`
+
+Escribe **`trucos`** en la consola para ver la lista completa de todos los trucos y cheats disponibles, incluyendo:
+- Dinero y materiales
+- Munición
+- Nivel, atributos y puntos
+- Estadísticas del personaje
+- Vehículos y teletransporte
+- RAM
+- Hackeos rápidos (Quickhacks)
+- Ciberware
+- Objetos específicos
+
 ### Current patches
 
 | Patch      | Description     |
