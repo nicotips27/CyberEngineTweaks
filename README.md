@@ -26,35 +26,38 @@ This fork includes essential fixes for **Cyberpunk 2077 Patch 2.3**:
 
 📖 **Full documentation**: [FIXES.md](FIXES.md) — complete technical details, root cause analysis, and installation guide.
 
-### 🎮 Nuevos Trucos / Cheats (En Desarrollo)
+### 🎮 Nuevos Trucos / Cheats (En Desarrollo) / New Cheats (In Development)
 
-Estamos trabajando en añadir una colección de nuevos trucos y funcionalidades para mejorar la experiencia de juego:
+Estamos trabajando en añadir una colección de nuevos trucos y funcionalidades para mejorar la experiencia de juego / We are working on adding a collection of new cheats and features to improve the gameplay experience:
 
-- **Trucos de Netrunner/Quickhack** — Acceso rápido a daemons, reducción de costos de RAM, cooldowns instantáneos
-- **Trucos de Combate** — Munición infinita, sin retroceso, daño multiplicado, invulnerabilidad
-- **Trucos de Exploración** — Super salto, noclip, teletransporte a waypoints, velocidad de movimiento
-- **Trucos de Economía** — Eddies ilimitados, componentes infinitos, desbloqueo de vendedores
-- **Trucos de Progresión** — XP instantánea, puntos de atributo/perk libres, nivel máximo
-- **Interfaz en Juego** — Menú dedicado accesible desde la consola para activar/desactivar trucos individualmente
+- **Trucos de Netrunner/Quickhack** — Acceso rápido a daemons, reducción de costos de RAM, cooldowns instantáneos / Fast access to daemons, reduced RAM costs, instant cooldowns
+- **Trucos de Combate** — Munición infinita, sin retroceso, daño multiplicado, invulnerabilidad / Infinite ammo, no recoil, multiplied damage, invulnerability
+- **Trucos de Exploración** — Super salto, noclip, teletransporte a waypoints, velocidad de movimiento / Super jump, noclip, teleport to waypoints, movement speed
+- **Trucos de Economía** — Eddies ilimitados, componentes infinitos, desbloqueo de vendedores / Unlimited eddies, infinite components, vendor unlocks
+- **Trucos de Progresión** — XP instantánea, puntos de atributo/perk libres, nivel máximo / Instant XP, free attribute/perk points, max level
+- **Interfaz en Juego** — Menú dedicado accesible desde la consola para activar/desactivar trucos individualmente / In-Game Interface — Dedicated menu accessible from console to toggle individual cheats
+- **Comando `trucos`** — Escribe `trucos` en la consola para ver la lista completa de trucos disponibles / Type `trucos` in the console to view the full list of available cheats
 
-> ⚠️ **Nota**: Estos trucos están en desarrollo y se irán añadiendo en futuras versiones. Úsalos bajo tu propia responsabilidad en partidas offline/single-player.
+> ⚠️ **Nota** / **Note**: Estos trucos están en desarrollo y se irán añadiendo en futuras versiones. Úsalos bajo tu propia responsabilidad en partidas offline/single-player / These cheats are in development and will be added in future versions. Use them at your own risk in offline/single-player games.
 
 ### Capturas de pantalla
 
 ![Trucos Netrunner](https://raw.githubusercontent.com/nicotips27/CyberEngineTweaks/renombrado-v1.36.0/Marketing/capturas/trucos.png)
 
-### Comando `trucos`
+### Comando `trucos` / `trucos` Command
 
-Escribe **`trucos`** en la consola para ver la lista completa de todos los trucos y cheats disponibles, incluyendo:
-- Dinero y materiales
-- Munición
-- Nivel, atributos y puntos
-- Estadísticas del personaje
-- Vehículos y teletransporte
-- RAM
-- Hackeos rápidos (Quickhacks)
-- Ciberware
-- Objetos específicos
+Escribe **`trucos`** en la consola para ver la lista completa de todos los trucos y cheats disponibles / Type **`trucos`** in the console to view the full list of available cheats:
+
+- **Dinero y materiales / Money & Materials** — `Game.AddToInventory("Items.money", 100000)`, materiales de fabricación
+- **Munición / Ammo** — Balas para pistolas, rifles, escopeta, francotirador
+- **Nivel, atributos y puntos / Level, Attributes & Points** — Nivel 60, Street Cred, puntos de atributo y perk
+- **Estadísticas del personaje / Character Stats** — Vida, armadura, capacidad de carga, daño crítico, velocidad, aguante infinito, modo dios, inmortal, eliminar heat
+- **Vehículos y teletransporte / Vehicles & Teleport** — Todos los vehículos, vehículos específicos, teletransporte a coordenadas
+- **RAM / RAM** — Mejoras de RAM legendaria
+- **Hackeos rápidos / Quickhacks** — Contagio, Colapso del Sistema, Suicidio, EMP, Ceguera, Blackwall, etc.
+- **Ciberware / Cyberware** — Cuchillas mantis, brazos de gorila
+- **Objetos específicos / Specific Items** — Cuchillo de Scorpion, Skippy, nudillos dorados, chaqueta Samurai, fin del juego con Johnny
+- **Recordatorios / Reminders** — Guardar la partida, comandos sensibles a mayúsculas, equipar ciberware/hackeos después de añadirlos
 
 ### Current patches
 
