@@ -319,21 +319,90 @@ void Scripting::Initialize()
         const sol::environment cEnv = aThisEnv;
         const auto logger = cEnv["__logger"].get<std::shared_ptr<spdlog::logger>>();
 
-        const auto cetRoot = m_paths.CETRoot();
-        const auto trucosPath = cetRoot / "Marketing" / "trucos.txt";
-
-        std::ifstream file(trucosPath);
-        if (!file.is_open())
-        {
-            logger->info("Could not open trucos.txt");
-            return;
-        }
-
-        std::string line;
-        while (std::getline(file, line))
-        {
-            logger->info("{}", line);
-        }
+        logger->info("═══════════════════════════════════════════");
+        logger->info("  Estalingrado Corp - Trucos/Cheats");
+        logger->info("═══════════════════════════════════════════");
+        logger->info("");
+        logger->info("=== DINERO Y MATERIALES ===");
+        logger->info("Game.AddToInventory(\"Items.money\", 100000) — Añade 100.000 eddies");
+        logger->info("Game.AddToInventory(\"Items.CommonMaterial1\", 1000) — Materiales comunes");
+        logger->info("Game.AddToInventory(\"Items.UncommonMaterial1\", 1000) — Materiales poco comunes");
+        logger->info("Game.AddToInventory(\"Items.RareMaterial1\", 1000) — Materiales raros");
+        logger->info("Game.AddToInventory(\"Items.EpicMaterial1\", 1000) — Materiales épicos");
+        logger->info("Game.AddToInventory(\"Items.LegendaryMaterial1\", 1000) — Materiales legendarios");
+        logger->info("Game.AddToInventory(\"Items.QuickHackUncommonMaterial1\", 1000) — Quickhacks poco comunes");
+        logger->info("Game.AddToInventory(\"Items.QuickHackRareMaterial1\", 1000) — Quickhacks raros");
+        logger->info("Game.AddToInventory(\"Items.QuickHackEpicMaterial1\", 1000) — Quickhacks épicos");
+        logger->info("Game.AddToInventory(\"Items.QuickHackLegendaryMaterial1\", 1000) — Quickhacks legendarios");
+        logger->info("");
+        logger->info("=== MUNICIÓN ===");
+        logger->info("Game.AddToInventory(\"Ammo.HandgunAmmo\", 500) — 500 balas pistolas");
+        logger->info("Game.AddToInventory(\"Ammo.RifleAmmo\", 700) — 700 balas rifles");
+        logger->info("Game.AddToInventory(\"Ammo.ShotgunAmmo\", 100) — 100 cartuchos escopeta");
+        logger->info("Game.AddToInventory(\"Ammo.SniperRifleAmmo\", 100) — 100 balas francotirador");
+        logger->info("");
+        logger->info("=== NIVEL, ATRIBUTOS Y PUNTOS ===");
+        logger->info("Game.SetLevel(\"Level\", 60, 1) — Nivel 60");
+        logger->info("Game.SetLevel(\"StreetCred\", 50, 1) — Street Cred 50");
+        logger->info("...AddDevelopmentPoints(10, gamedataDevelopmentPointType.Attribute) — +10 puntos atributo");
+        logger->info("...AddDevelopmentPoints(10, gamedataDevelopmentPointType.Primary) — +10 puntos ventaja");
+        logger->info("...SetAttribute(\"Strength\", 15) — Atributo Fuerza 15 (Reflexes/TechnicalAbility/Intelligence/Cool)");
+        logger->info("Game.AddToInventory(\"Items.PerkPointSkillbook\", 1) — Libro punto ventaja");
+        logger->info("Game.AddToInventory(\"Items.AttributePointSkillbook\", 1) — Libro punto atributo");
+        logger->info("");
+        logger->info("=== ESTADÍSTICAS DEL PERSONAJE ===");
+        logger->info("Game.ModStatPlayer(\"Health\", 500) — Vida a 500");
+        logger->info("Game.ModStatPlayer(\"Armor\", 200) — Armadura a 200");
+        logger->info("Game.ModStatPlayer(\"CarryCapacity\", 500) — Capacidad carga a 500");
+        logger->info("Game.ModStatPlayer(\"CritDamage\", 100) — Daño crítico a 100");
+        logger->info("Game.ModStatPlayer(\"MaxSpeed\", 10) — Velocidad movimiento a 10");
+        logger->info("Game.InfiniteStamina(true) — Aguante infinito");
+        logger->info("Game.ModStatPlayer(\"Health\", \"99999\") — Vida 99.999 (modo dios)");
+        logger->info("Game.GetPlayer():SetImmortal(true) — Inmortal");
+        logger->info("Game.GetPoliceSystem():ClearHeat() — Elimina búsqueda policial");
+        logger->info("");
+        logger->info("=== VEHÍCULOS Y TELETRANSPORTE ===");
+        logger->info("Game.GetVehicleSystem():EnableAllPlayerVehicles() — Desbloquea todos los vehículos");
+        logger->info("Game.GetVehicleSystem():EnablePlayerVehicle('Vehicle.vcd_brennan_apollo_ncpd', true, false) — Moto Brennan Apollo NCPD");
+        logger->info("Game.GetTeleportationSystem():TeleportToPoint(x, y, z) — Teletransporte a coordenadas");
+        logger->info("");
+        logger->info("=== RAM ===");
+        logger->info("Game.AddToInventory(\"Items.AdvancedRamUpgradeLegendaryplusplus\", 1) — RAM legendaria++ (Phantom Liberty)");
+        logger->info("Game.AddToInventory(\"Items.AdvancedRamUpgradeLegendaryplus\", 1) — RAM legendaria+ (sin DLC)");
+        logger->info("Game.AddToInventory(\"Items.AdvancedRamUpgradeLegendary\", 1) — RAM legendaria base");
+        logger->info("");
+        logger->info("=== QUICKHACKS ===");
+        logger->info("Game.AddToInventory(\"Items.ContagionLvl4PlusPlusProgram\", 1) — Contagio legendario");
+        logger->info("Game.AddToInventory(\"Items.SystemCollapseLvl4PlusPlusProgram\", 1) — Colapso Sistema legendario");
+        logger->info("Game.AddToInventory(\"Items.SuicideLvl4PlusPlusProgram\", 1) — Suicidio legendario");
+        logger->info("Game.AddToInventory(\"Items.EMPOverloadLvl4PlusPlusProgram\", 1) — Sobrecarga EMP legendario");
+        logger->info("Game.AddToInventory(\"Items.BlindLvl4PlusPlusProgram\", 1) — Ceguera legendario");
+        logger->info("Game.AddToInventory(\"Items.DisableCyberwareLvl4PlusPlusProgram\", 1) — Fallo Ciberware legendario");
+        logger->info("Game.AddToInventory(\"Items.PingLvl4PlusPlusProgram\", 1) — Ping legendario");
+        logger->info("Game.AddToInventory(\"Items.MemoryWipeLvl4PlusPlusProgram\", 1) — Reinicio Óptica legendario");
+        logger->info("Game.AddToInventory(\"Items.WeaponMalfunctionLvl4PlusPlusProgram\", 1) — Fallo Arma legendario");
+        logger->info("Game.AddToInventory(\"Items.LocomotionMalfunctionLvl4PlusPlusProgram\", 1) — Fallo Movilidad legendario");
+        logger->info("Game.AddToInventory(\"Items.MadnessLvl4PlusPlusProgram\", 1) — Risa legendario");
+        logger->info("Game.AddToInventory(\"Items.ActualBlackwallQuickhack\") — Blackwall multiobjetivo");
+        logger->info("Game.AddToInventory(\"Items.BlackwallGateway_Songbird\",1) — Blackwall icónico Songbird");
+        logger->info("Game.AddToInventory(\"Items.BlackWallProgramLvl4\",1) — Blackwall nivel 4");
+        logger->info("Game.AddToInventory(\"Items.BlackWallProgramLvl3\",1) — Blackwall nivel 3");
+        logger->info("");
+        logger->info("=== CIBERWARE ===");
+        logger->info("Game.AddToInventory(\"Items.PredatorsFrenzyMantisBlades\", 1) — Cuchillas Mantis Predators Frenzy");
+        logger->info("Game.AddToInventory(\"Items.DynalarStrongArms\", 1) — Brazos Gorila Dynalar");
+        logger->info("");
+        logger->info("=== EXTRAS Y OBJETOS ESPECÍFICOS ===");
+        logger->info("Game.SetDebugFact(\"sqo32_johnny_friend\", 1) — Amistad con Johnny (final secreto)");
+        logger->info("Game.AddToInventory(\"Items.mq001_scorpions_knife\", 1) — Cuchillo de Scorpion");
+        logger->info("Game.AddToInventory(\"Items.mq007_skippy\", 1) — Pistola Skippy");
+        logger->info("Game.AddToInventory(\"Items.mq008_golden_knuckledusters\", 1) — Nudillos dorados");
+        logger->info("Game.AddToInventory(\"Items.mq011_wilson_gun\", 1) — Pistola de Wilson");
+        logger->info("Game.AddToInventory(\"Items.Preset_Achilles_Default\", 1) — Rifle Achilles básico");
+        logger->info("Game.AddToInventory(\"Items.t_dress_black_leather\", 1) — Vestido cuero negro");
+        logger->info("Game.AddToInventory(\"Items.SQ031_Samurai_Jacket\", 1) — Chaqueta Samurai Johnny");
+        logger->info("");
+        logger->info("═══════════════════════════════════════════");
     };
 
     // load mods
