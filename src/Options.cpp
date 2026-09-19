@@ -1,6 +1,7 @@
 #include <stdafx.h>
 
 #include "config/CETVersion.h"
+#include "common/Banner.h"
 #include "Paths.h"
 #include "Utils.h"
 #include "RED4ext/Api/Runtime.hpp"
@@ -172,6 +173,7 @@ Options::Options(Paths& aPaths)
 
     set_default_logger(CreateLogger(GetAbsolutePath(L"cyber_engine_tweaks.log", m_paths.CETRoot(), true), "main", nullptr, "[%Y-%m-%d %H:%M:%S UTC%z] [%l] [%!] [%t] %v"));
 
+    Log::Info(ESTALINGRADO_BANNER);
     Log::Info("Estalingrado Corp Netrunner Console is starting...");
 
     GameImage.Initialize();
