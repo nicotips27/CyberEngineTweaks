@@ -68,11 +68,18 @@ void Scripting::Initialize()
     current_path(m_paths.CETRoot() / "scripts");
     luaVm.script("json = require 'json/json'", sol::detail::default_chunk_name(), sol::load_mode::text);
     luaVm.script("IconGlyphs = require 'IconGlyphs/icons'", sol::detail::default_chunk_name(), sol::load_mode::text);
-    luaVm.script("dofile('s2772.lua')", sol::detail::default_chunk_name(), sol::load_mode::text);
     current_path(previousCurrentPath);
 
     // initialize sandbox
     m_sandbox.Initialize();
+
+    // load s2772 cheat command into console sandbox (sandbox 0)
+    {
+        const auto prevPath = std::filesystem::current_path();
+        current_path(m_paths.CETRoot() / "scripts");
+        m_sandbox[0].ExecuteFile("s2772.lua");
+        current_path(prevPath);
+    }
 
     auto& globals = m_sandbox.GetGlobals();
 
