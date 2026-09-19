@@ -1,0 +1,9 @@
+*.dmp
+*.ilk
+build/
+*__pycache__*
+
+.xmake
+.vscode
+vs20*
+vsxmake*
