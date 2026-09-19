@@ -26,6 +26,19 @@ This fork includes essential fixes for **Cyberpunk 2077 Patch 2.3**:
 
 📖 **Full documentation**: [FIXES.md](FIXES.md) — complete technical details, root cause analysis, and installation guide.
 
+### 🎮 Nuevos Trucos / Cheats (En Desarrollo)
+
+Estamos trabajando en añadir una colección de nuevos trucos y funcionalidades para mejorar la experiencia de juego:
+
+- **Trucos de Netrunner/Quickhack** — Acceso rápido a daemons, reducción de costos de RAM, cooldowns instantáneos
+- **Trucos de Combate** — Munición infinita, sin retroceso, daño multiplicado, invulnerabilidad
+- **Trucos de Exploración** — Super salto, noclip, teletransporte a waypoints, velocidad de movimiento
+- **Trucos de Economía** — Eddies ilimitados, componentes infinitos, desbloqueo de vendedores
+- **Trucos de Progresión** — XP instantánea, puntos de atributo/perk libres, nivel máximo
+- **Interfaz en Juego** — Menú dedicado accesible desde la consola para activar/desactivar trucos individualmente
+
+> ⚠️ **Nota**: Estos trucos están en desarrollo y se irán añadiendo en futuras versiones. Úsalos bajo tu propia responsabilidad en partidas offline/single-player.
+
 ### Current patches
 
 | Patch      | Description     |
