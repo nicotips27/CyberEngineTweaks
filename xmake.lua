@@ -55,7 +55,7 @@ target("RED4ext.SDK")
     add_includedirs("vendor/RED4ext.SDK/include/", { public = true })
     on_install(function() end)
 
-target("cyber_engine_tweaks")
+target("estalingrado_corp_netrunner_console")
     add_defines("WIN32_LEAN_AND_MEAN", "NOMINMAX", "WINVER=0x0601", "SOL_ALL_SAFETIES_ON", "SOL_LUAJIT=1", "SOL_EXCEPTIONS_SAFE_PROPAGATION", "SPDLOG_WCHAR_TO_UTF8_SUPPORT", "SPDLOG_WCHAR_FILENAMES", "SPDLOG_WCHAR_SUPPORT", "IMGUI_USER_CONFIG=\""..imguiUserConfig.."\"") -- WINVER=0x0601 == Windows 7xmake
     set_pcxxheader("src/stdafx.h")
     set_kind("shared")
@@ -73,7 +73,7 @@ target("cyber_engine_tweaks")
     -- Set up basic config variables.
     -- Required for us to set up something here first to be able to access and modify "configvars"
     -- in `on_load`, there seems to be no way to do this otherwise at the moment.
-    set_configvar("CET_PRODUCT_NAME", "Cyber Engine Tweaks")
+    set_configvar("CET_PRODUCT_NAME", "Estalingrado Corp Netrunner Console")
 
     on_load(function(target)
         -- Set filename based on project name
@@ -158,13 +158,13 @@ target("cyber_engine_tweaks")
         ), "package/bin/x64/plugins/")
     end)
     on_install(function(target)
-        cprint("${green bright}Installing Cyber Engine Tweaks ..")
+        cprint("${green bright}Installing Estalingrado Corp Netrunner Console ..")
         assert(os.isdir("$(installpath)"), format("The path in your configuration doesn't exist or isn't a directory.\n\tUse the follow command to set install path:\n\txmake f --installpath=%s", [["C:\Program Files (x86)\Steam\steamapps\common\Cyberpunk 2077\bin\x64\plugins"]]))
         os.cp(target:targetfile(), "$(installpath)")
-        cprint("Cyber Engine Tweaks installed at: ${underline}%s", "$(installpath)")
+        cprint("Estalingrado Corp Netrunner Console installed at: ${underline}%s", "$(installpath)")
     end)
 
 option("installpath")
     set_default("installpath")
     set_showmenu(true)
-    set_description("Set the path to install cyber_engine_tweaks.asi to.", "e.g.", format("\t-xmake f --installpath=%s", [["C:\Program Files (x86)\Steam\steamapps\common\Cyberpunk 2077\bin\x64\plugins"]]))
+    set_description("Set the path to install estalingrado_corp_netrunner_console.asi to.", "e.g.", format("\t-xmake f --installpath=%s", [["C:\Program Files (x86)\Steam\steamapps\common\Cyberpunk 2077\bin\x64\plugins"]]))

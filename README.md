@@ -1,4 +1,4 @@
-# Cyber Engine Tweaks
+# Estalingrado Corp Netrunner Console
 
 [![Patreon](https://img.shields.io/badge/Patreon-donate-purple.svg)](https://www.patreon.com/tiltedphoques) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/) [![Discord](https://img.shields.io/discord/717692382849663036.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/Epkq79kd96)
 
@@ -9,13 +9,25 @@
 
 ## What's this?
 
-**Cyber Engine Tweaks** is a framework giving modders a way to script mods using [Lua](https://www.lua.org/) with access to all the internal scripting features.
+**Estalingrado Corp Netrunner Console** is a framework giving modders a way to script mods using [Lua](https://www.lua.org/) with access to all the internal scripting features.
 It also comes with a [Dear ImGui](https://github.com/ocornut/imgui/tree/v1.82) to provide GUI for different mods you are using, along with console and TweakDB editor for more advanced usage.
 It also adds some patches for quality of life, all of which can be enabled/disabled through the settings menu or config files (requires game restart to apply).
 
-Cyber Engine Tweaks tracks the current release of Cyberpunk 2077 closely.
-The current release of CET is available from the releases page: 
-[![All Releases](https://img.shields.io/github/downloads/maximegmd/CyberEngineTweaks/total)](https://github.com/maximegmd/CyberEngineTweaks/releases).
+Estalingrado Corp Netrunner Console tracks the current release of Cyberpunk 2077 closely.
+The current release is available from the releases page: 
+[![All Releases](https://img.shields.io/github/downloads/nicotips27/CyberEngineTweaks/total)](https://github.com/nicotips27/CyberEngineTweaks/releases).
+
+### 🔧 Critical Fixes Included (v1.36.0-fork)
+
+This fork includes essential fixes for **Cyberpunk 2077 Patch 2.3**:
+
+| Fix | Description |
+|-----|-------------|
+| **Console Key Binding** | Fixed `overlay_key` encoding in `bindings.json` — the "<" key (VK_OEM_102) now correctly opens the CET console |
+| **MaxHacking Mod v2** | Updated for Patch 2.x API: replaced removed `Game.AddExp()` with `dev:SetAttribute()`, added retry logic for `GetDevelopmentData()` |
+| **Mod Loading Clarification** | CET loads ALL folders in `mods\` — `.disabled` suffix does NOT disable mods |
+
+📖 **Full documentation**: [FIXES.md](FIXES.md) — complete technical details, root cause analysis, and installation guide.
 
 ### Current patches
 
