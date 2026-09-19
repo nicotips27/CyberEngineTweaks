@@ -229,8 +229,6 @@ void Overlay::Update()
         DrawToolbar();
     ImGui::End();
     io.FontGlobalScale = oldFontScale;
-    ImGui::GetIO().Fonts->Fonts[0]->Scale = 1.0f;
-    ImGui::PopFont();
 
     m_console.Draw();
     m_bindings.Draw();
