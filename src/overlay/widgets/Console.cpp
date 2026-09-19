@@ -105,7 +105,26 @@ void Console::OnUpdate()
         // execute command and record it to history if it is not empty
         if (!m_command.empty())
         {
-            if (!m_vm.ExecuteLua(m_command))
+            // Auto-append () for known commands without parentheses
+            static const std::vector<std::string> s_knownCommands = {
+                "help", "GetVersion", "GetDisplayResolution", "ModArchiveExists",
+                "DumpAllTypeNames", "ReloadAllMods"
+            };
+            std::string command = m_command;
+            bool hasParens = command.find('(') != std::string::npos;
+            if (!hasParens)
+            {
+                for (const auto& known : s_knownCommands)
+                {
+                    if (command == known)
+                    {
+                        command += "()";
+                        break;
+                    }
+                }
+            }
+
+            if (!m_vm.ExecuteLua(command))
                 consoleLogger->info("Command failed to execute!");
 
             m_command.shrink_to_fit();

@@ -220,9 +220,17 @@ void Overlay::Update()
     const auto heightLimit = 2 * ImGui::GetFrameHeight() + 2 * ImGui::GetStyle().WindowPadding.y;
     ImGui::SetNextWindowPos({width * 0.25f, height * 0.05f}, ImGuiCond_FirstUseEver);
     ImGui::SetNextWindowSizeConstraints({width * 0.5f, heightLimit}, {FLT_MAX, heightLimit});
+    
+    // Larger font for window title
+    auto& io = ImGui::GetIO();
+    float oldFontScale = io.FontGlobalScale;
+    io.FontGlobalScale = 1.5f;
     if (ImGui::Begin("Estalingrado Corp Netrunner Console"))
         DrawToolbar();
     ImGui::End();
+    io.FontGlobalScale = oldFontScale;
+    ImGui::GetIO().Fonts->Fonts[0]->Scale = 1.0f;
+    ImGui::PopFont();
 
     m_console.Draw();
     m_bindings.Draw();

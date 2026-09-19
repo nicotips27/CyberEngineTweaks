@@ -317,15 +317,15 @@ bool D3D12::InitializeImGui(size_t aBuffersCounts)
         colors[ImGuiCol_ScrollbarGrab] = ImVec4(0.2f, 0.2f, 0.2f, 1.00f);  // Scrollbar grab
         colors[ImGuiCol_ScrollbarGrabHovered] = ImVec4(0.3f, 0.3f, 0.3f, 1.00f); // Scrollbar grab hovered
         colors[ImGuiCol_ScrollbarGrabActive] = ImVec4(0.4f, 0.4f, 0.4f, 1.00f); // Scrollbar grab active
-        colors[ImGuiCol_CheckMark] = ImVec4(0.0f, 1.0f, 0.0f, 1.00f);      // Checkmark (green)
-        colors[ImGuiCol_SliderGrab] = ImVec4(0.0f, 0.8f, 0.0f, 1.00f);     // Slider grab (green)
-        colors[ImGuiCol_SliderGrabActive] = ImVec4(0.0f, 1.0f, 0.0f, 1.00f); // Slider grab active (green)
+        colors[ImGuiCol_CheckMark] = ImVec4(0.0f, 0.6f, 1.0f, 1.00f);      // Checkmark (blue)
+        colors[ImGuiCol_SliderGrab] = ImVec4(0.0f, 0.5f, 1.0f, 1.00f);     // Slider grab (blue)
+        colors[ImGuiCol_SliderGrabActive] = ImVec4(0.0f, 0.7f, 1.0f, 1.00f); // Slider grab active (blue)
         colors[ImGuiCol_Button] = ImVec4(0.05f, 0.05f, 0.05f, 1.00f);      // Button background
-        colors[ImGuiCol_ButtonHovered] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f); // Button hovered
-        colors[ImGuiCol_ButtonActive] = ImVec4(0.2f, 0.2f, 0.2f, 1.00f);   // Button active
-        colors[ImGuiCol_Header] = ImVec4(0.1f, 0.1f, 0.1f, 1.00f);         // Header background
-        colors[ImGuiCol_HeaderHovered] = ImVec4(0.2f, 0.2f, 0.2f, 1.00f);  // Header hovered
-        colors[ImGuiCol_HeaderActive] = ImVec4(0.3f, 0.3f, 0.3f, 1.00f);   // Header active
+        colors[ImGuiCol_ButtonHovered] = ImVec4(0.1f, 0.15f, 0.2f, 1.00f); // Button hovered (blue tint)
+        colors[ImGuiCol_ButtonActive] = ImVec4(0.15f, 0.2f, 0.3f, 1.00f);   // Button active (blue tint)
+        colors[ImGuiCol_Header] = ImVec4(0.1f, 0.15f, 0.2f, 1.00f);         // Header background (blue tint)
+        colors[ImGuiCol_HeaderHovered] = ImVec4(0.2f, 0.25f, 0.3f, 1.00f);  // Header hovered (blue tint)
+        colors[ImGuiCol_HeaderActive] = ImVec4(0.3f, 0.35f, 0.4f, 1.00f);   // Header active (blue tint)
         colors[ImGuiCol_Separator] = ImVec4(0.2f, 0.2f, 0.2f, 1.00f);      // Separator
         colors[ImGuiCol_SeparatorHovered] = ImVec4(0.3f, 0.3f, 0.3f, 1.00f); // Separator hovered
         colors[ImGuiCol_SeparatorActive] = ImVec4(0.4f, 0.4f, 0.4f, 1.00f); // Separator active
@@ -339,21 +339,21 @@ bool D3D12::InitializeImGui(size_t aBuffersCounts)
         colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.1f, 0.1f, 0.1f, 1.00f); // Tab unfocused active
         colors[ImGuiCol_DockingPreview] = ImVec4(0.0f, 0.5f, 0.0f, 1.00f);  // Docking preview
         colors[ImGuiCol_DockingEmptyBg] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);  // Docking empty background
-        colors[ImGuiCol_PlotLines] = ImVec4(0.0f, 1.0f, 0.0f, 1.00f);      // Plot lines (green)
-        colors[ImGuiCol_PlotLinesHovered] = ImVec4(0.0f, 1.0f, 0.0f, 1.00f); // Plot lines hovered
-        colors[ImGuiCol_PlotHistogram] = ImVec4(0.0f, 0.8f, 0.0f, 1.00f);   // Plot histogram
-        colors[ImGuiCol_PlotHistogramHovered] = ImVec4(0.0f, 1.0f, 0.0f, 1.00f); // Plot histogram hovered
+        colors[ImGuiCol_PlotLines] = ImVec4(0.0f, 0.6f, 1.0f, 1.00f);      // Plot lines (blue)
+        colors[ImGuiCol_PlotLinesHovered] = ImVec4(0.0f, 0.8f, 1.0f, 1.00f); // Plot lines hovered
+        colors[ImGuiCol_PlotHistogram] = ImVec4(0.0f, 0.5f, 1.0f, 1.00f);   // Plot histogram
+        colors[ImGuiCol_PlotHistogramHovered] = ImVec4(0.0f, 0.7f, 1.0f, 1.00f); // Plot histogram hovered
         colors[ImGuiCol_TableHeaderBg] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);   // Table header background
-        colors[ImGuiCol_TableBorderStrong] = ImVec4(0.2f, 0.2f, 0.2f, 1.00f); // Table border strong
-        colors[ImGuiCol_TableBorderLight] = ImVec4(0.1f, 0.1f, 0.1f, 1.00f); // Table border light
+        colors[ImGuiCol_TableBorderStrong] = ImVec4(0.2f, 0.3f, 0.4f, 1.00f); // Table border strong (blue tint)
+        colors[ImGuiCol_TableBorderLight] = ImVec4(0.1f, 0.15f, 0.2f, 1.00f); // Table border light (blue tint)
         colors[ImGuiCol_TableRowBg] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);      // Table row background
-        colors[ImGuiCol_TableRowBgAlt] = ImVec4(0.05f, 0.05f, 0.05f, 1.00f); // Table row background alt
-        colors[ImGuiCol_TextSelectedBg] = ImVec4(0.0f, 0.4f, 0.0f, 1.00f);  // Text selection background (green)
-        colors[ImGuiCol_DragDropTarget] = ImVec4(0.0f, 0.8f, 0.0f, 1.00f);  // Drag drop target
+        colors[ImGuiCol_TableRowBgAlt] = ImVec4(0.05f, 0.07f, 0.1f, 1.00f); // Table row background alt (blue tint)
+        colors[ImGuiCol_TextSelectedBg] = ImVec4(0.0f, 0.3f, 0.6f, 1.00f);  // Text selection background (blue)
+        colors[ImGuiCol_DragDropTarget] = ImVec4(0.0f, 0.6f, 1.0f, 1.00f);  // Drag drop target
 
-        // Text colors - green terminal style
-        colors[ImGuiCol_Text] = ImVec4(0.0f, 1.0f, 0.0f, 1.00f);            // Default text (green)
-        colors[ImGuiCol_TextDisabled] = ImVec4(0.3f, 0.3f, 0.3f, 1.00f);    // Disabled text
+        // Text colors - blue terminal style
+        colors[ImGuiCol_Text] = ImVec4(0.6f, 0.8f, 1.0f, 1.00f);            // Default text (light blue)
+        colors[ImGuiCol_TextDisabled] = ImVec4(0.3f, 0.4f, 0.5f, 1.00f);    // Disabled text
 
         m_styleReference.WindowRounding = 0.0f;
         m_styleReference.WindowTitleAlign.x = 0.5f;
