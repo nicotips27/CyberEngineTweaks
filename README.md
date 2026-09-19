@@ -39,6 +39,10 @@ Estamos trabajando en añadir una colección de nuevos trucos y funcionalidades 
 
 > ⚠️ **Nota**: Estos trucos están en desarrollo y se irán añadiendo en futuras versiones. Úsalos bajo tu propia responsabilidad en partidas offline/single-player.
 
+### Capturas de pantalla
+
+![Trucos Netrunner](https://raw.githubusercontent.com/nicotips27/CyberEngineTweaks/renombrado-v1.36.0/Marketing/capturas/trucos.png)
+
 ### Current patches
 
 | Patch      | Description     |
