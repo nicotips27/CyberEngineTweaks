@@ -55,17 +55,17 @@ void LogWindow::Draw(const ImVec2& size)
 
                 switch (level)
                 {
-                case spdlog::level::level_enum::trace: ImGui::PushStyleColor(ImGuiCol_Text, ImVec4{0.0f, 0.0f, 1.0f, 1.0f}); break;
+                case spdlog::level::level_enum::trace: ImGui::PushStyleColor(ImGuiCol_Text, ImVec4{0.0f, 0.8f, 1.0f, 1.0f}); break; // cyan
 
-                case spdlog::level::level_enum::debug: ImGui::PushStyleColor(ImGuiCol_Text, ImVec4{0.0f, 1.0f, 0.0f, 1.0f}); break;
+                case spdlog::level::level_enum::debug: ImGui::PushStyleColor(ImGuiCol_Text, ImVec4{0.0f, 1.0f, 0.0f, 1.0f}); break; // green
 
-                case spdlog::level::level_enum::warn: ImGui::PushStyleColor(ImGuiCol_Text, ImVec4{1.0f, 1.0f, 0.0f, 1.0f}); break;
+                case spdlog::level::level_enum::warn: ImGui::PushStyleColor(ImGuiCol_Text, ImVec4{1.0f, 1.0f, 0.0f, 1.0f}); break; // yellow
 
                 case spdlog::level::level_enum::err:
-                case spdlog::level::level_enum::critical: ImGui::PushStyleColor(ImGuiCol_Text, ImVec4{1.0f, 0.1f, 0.2f, 1.0f}); break;
+                case spdlog::level::level_enum::critical: ImGui::PushStyleColor(ImGuiCol_Text, ImVec4{1.0f, 0.2f, 0.2f, 1.0f}); break; // red
 
                 case spdlog::level::level_enum::info:
-                default: ImGui::PushStyleColor(ImGuiCol_Text, ImGui::GetStyleColorVec4(ImGuiCol_Text));
+                default: ImGui::PushStyleColor(ImGuiCol_Text, ImVec4{0.0f, 1.0f, 0.0f, 1.0f}); // green
                 }
 
                 ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0, 0, 0, 0));

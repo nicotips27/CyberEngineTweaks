@@ -1,4 +1,4 @@
-set_xmakever("2.7.2")
+set_xmakever("3.0.0")
 
 set_languages("cxx20")
 set_arch("x64")
@@ -29,7 +29,14 @@ set_runtimes(is_mode("release") and "MD" or "MDd");
 
 -- Helper: safe git command with fallback
 local function git_safe(cmd, fallback)
-    local result = os.iorun(cmd)
+    local result
+    -- In xmake 3, os.iorun is only available in sandbox
+    -- Try using os.exec first (available in xmake 3)
+    if os.exec then
+        result = os.exec(cmd)
+    elseif os.iorun then
+        result = os.iorun(cmd)
+    end
     if result then
         result = result:gsub("%s+", "")
         if #result > 0 then return result end

@@ -298,16 +298,75 @@ bool D3D12::InitializeImGui(size_t aBuffersCounts)
         ImGui::CreateContext();
 
         // TODO - make this configurable eventually and overridable by mods for themselves easily
-        // setup CET default style
+        // setup CET default style - all black terminal theme
         ImGui::StyleColorsDark(&m_styleReference);
-        m_styleReference.WindowRounding = 6.0f;
+
+        // Make everything black
+        auto& colors = m_styleReference.Colors;
+        colors[ImGuiCol_WindowBg] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);       // Window background
+        colors[ImGuiCol_ChildBg] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);        // Child window background
+        colors[ImGuiCol_PopupBg] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);        // Popup background
+        colors[ImGuiCol_FrameBg] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);        // Frame background (input fields)
+        colors[ImGuiCol_FrameBgHovered] = ImVec4(0.1f, 0.1f, 0.1f, 1.00f); // Frame background hovered
+        colors[ImGuiCol_FrameBgActive] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f); // Frame background active
+        colors[ImGuiCol_TitleBg] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);        // Title bar background
+        colors[ImGuiCol_TitleBgActive] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);  // Title bar background active
+        colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f); // Title bar background collapsed
+        colors[ImGuiCol_MenuBarBg] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);      // Menu bar background
+        colors[ImGuiCol_ScrollbarBg] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);    // Scrollbar background
+        colors[ImGuiCol_ScrollbarGrab] = ImVec4(0.2f, 0.2f, 0.2f, 1.00f);  // Scrollbar grab
+        colors[ImGuiCol_ScrollbarGrabHovered] = ImVec4(0.3f, 0.3f, 0.3f, 1.00f); // Scrollbar grab hovered
+        colors[ImGuiCol_ScrollbarGrabActive] = ImVec4(0.4f, 0.4f, 0.4f, 1.00f); // Scrollbar grab active
+        colors[ImGuiCol_CheckMark] = ImVec4(0.0f, 1.0f, 0.0f, 1.00f);      // Checkmark (green)
+        colors[ImGuiCol_SliderGrab] = ImVec4(0.0f, 0.8f, 0.0f, 1.00f);     // Slider grab (green)
+        colors[ImGuiCol_SliderGrabActive] = ImVec4(0.0f, 1.0f, 0.0f, 1.00f); // Slider grab active (green)
+        colors[ImGuiCol_Button] = ImVec4(0.05f, 0.05f, 0.05f, 1.00f);      // Button background
+        colors[ImGuiCol_ButtonHovered] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f); // Button hovered
+        colors[ImGuiCol_ButtonActive] = ImVec4(0.2f, 0.2f, 0.2f, 1.00f);   // Button active
+        colors[ImGuiCol_Header] = ImVec4(0.1f, 0.1f, 0.1f, 1.00f);         // Header background
+        colors[ImGuiCol_HeaderHovered] = ImVec4(0.2f, 0.2f, 0.2f, 1.00f);  // Header hovered
+        colors[ImGuiCol_HeaderActive] = ImVec4(0.3f, 0.3f, 0.3f, 1.00f);   // Header active
+        colors[ImGuiCol_Separator] = ImVec4(0.2f, 0.2f, 0.2f, 1.00f);      // Separator
+        colors[ImGuiCol_SeparatorHovered] = ImVec4(0.3f, 0.3f, 0.3f, 1.00f); // Separator hovered
+        colors[ImGuiCol_SeparatorActive] = ImVec4(0.4f, 0.4f, 0.4f, 1.00f); // Separator active
+        colors[ImGuiCol_ResizeGrip] = ImVec4(0.2f, 0.2f, 0.2f, 1.00f);     // Resize grip
+        colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.3f, 0.3f, 0.3f, 1.00f); // Resize grip hovered
+        colors[ImGuiCol_ResizeGripActive] = ImVec4(0.4f, 0.4f, 0.4f, 1.00f); // Resize grip active
+        colors[ImGuiCol_Tab] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);            // Tab background
+        colors[ImGuiCol_TabHovered] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);  // Tab hovered
+        colors[ImGuiCol_TabActive] = ImVec4(0.2f, 0.2f, 0.2f, 1.00f);      // Tab active
+        colors[ImGuiCol_TabUnfocused] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);   // Tab unfocused
+        colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.1f, 0.1f, 0.1f, 1.00f); // Tab unfocused active
+        colors[ImGuiCol_DockingPreview] = ImVec4(0.0f, 0.5f, 0.0f, 1.00f);  // Docking preview
+        colors[ImGuiCol_DockingEmptyBg] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);  // Docking empty background
+        colors[ImGuiCol_PlotLines] = ImVec4(0.0f, 1.0f, 0.0f, 1.00f);      // Plot lines (green)
+        colors[ImGuiCol_PlotLinesHovered] = ImVec4(0.0f, 1.0f, 0.0f, 1.00f); // Plot lines hovered
+        colors[ImGuiCol_PlotHistogram] = ImVec4(0.0f, 0.8f, 0.0f, 1.00f);   // Plot histogram
+        colors[ImGuiCol_PlotHistogramHovered] = ImVec4(0.0f, 1.0f, 0.0f, 1.00f); // Plot histogram hovered
+        colors[ImGuiCol_TableHeaderBg] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);   // Table header background
+        colors[ImGuiCol_TableBorderStrong] = ImVec4(0.2f, 0.2f, 0.2f, 1.00f); // Table border strong
+        colors[ImGuiCol_TableBorderLight] = ImVec4(0.1f, 0.1f, 0.1f, 1.00f); // Table border light
+        colors[ImGuiCol_TableRowBg] = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);      // Table row background
+        colors[ImGuiCol_TableRowBgAlt] = ImVec4(0.05f, 0.05f, 0.05f, 1.00f); // Table row background alt
+        colors[ImGuiCol_TextSelectedBg] = ImVec4(0.0f, 0.4f, 0.0f, 1.00f);  // Text selection background (green)
+        colors[ImGuiCol_DragDropTarget] = ImVec4(0.0f, 0.8f, 0.0f, 1.00f);  // Drag drop target
+
+        // Text colors - green terminal style
+        colors[ImGuiCol_Text] = ImVec4(0.0f, 1.0f, 0.0f, 1.00f);            // Default text (green)
+        colors[ImGuiCol_TextDisabled] = ImVec4(0.3f, 0.3f, 0.3f, 1.00f);    // Disabled text
+
+        m_styleReference.WindowRounding = 0.0f;
         m_styleReference.WindowTitleAlign.x = 0.5f;
-        m_styleReference.ChildRounding = 6.0f;
-        m_styleReference.PopupRounding = 6.0f;
-        m_styleReference.FrameRounding = 6.0f;
-        m_styleReference.ScrollbarRounding = 12.0f;
-        m_styleReference.GrabRounding = 12.0f;
-        m_styleReference.TabRounding = 6.0f;
+        m_styleReference.ChildRounding = 0.0f;
+        m_styleReference.PopupRounding = 0.0f;
+        m_styleReference.FrameRounding = 0.0f;
+        m_styleReference.ScrollbarRounding = 0.0f;
+        m_styleReference.GrabRounding = 0.0f;
+        m_styleReference.TabRounding = 0.0f;
+        m_styleReference.WindowBorderSize = 1.0f;
+        m_styleReference.FrameBorderSize = 1.0f;
+        m_styleReference.PopupBorderSize = 1.0f;
+        m_styleReference.ChildBorderSize = 1.0f;
     }
 
     ImGui::GetStyle() = m_styleReference;

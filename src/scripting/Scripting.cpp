@@ -164,6 +164,149 @@ void Scripting::Initialize()
         return false;
     };
 
+    globals["help"] = [this](sol::optional<std::string> acCommand, sol::this_environment aThisEnv) -> void
+    {
+        const sol::environment cEnv = aThisEnv;
+        const auto logger = cEnv["__logger"].get<std::shared_ptr<spdlog::logger>>();
+
+        if (acCommand)
+        {
+            const auto& cmd = *acCommand;
+            if (cmd == "help")
+            {
+                logger->info("help([command]) - Show this help message. Optionally provide a command name for detailed help.");
+            }
+            else if (cmd == "print")
+            {
+                logger->info("print(...) - Print values to the console log.");
+            }
+            else if (cmd == "GetVersion")
+            {
+                logger->info("GetVersion() - Returns the CET version string.");
+            }
+            else if (cmd == "GetDisplayResolution")
+            {
+                logger->info("GetDisplayResolution() - Returns the current display resolution as (width, height).");
+            }
+            else if (cmd == "ModArchiveExists")
+            {
+                logger->info("ModArchiveExists(archiveName) - Check if a mod archive exists.");
+            }
+            else if (cmd == "IsDefined")
+            {
+                logger->info("IsDefined(ref) - Check if a weak reference is still valid.");
+            }
+            else if (cmd == "EnumInt")
+            {
+                logger->info("EnumInt(enum) - Get the integer value of an enum.");
+            }
+            else if (cmd == "GameOptions")
+            {
+                logger->info("GameOptions - Game options management:");
+                logger->info("  GameOptions.Print() - Print all options");
+                logger->info("  GameOptions.Get(name) - Get option value");
+                logger->info("  GameOptions.Set(name, value) - Set option value");
+                logger->info("  GameOptions.Toggle(name) - Toggle boolean option");
+                logger->info("  GameOptions.Dump() - Dump all options");
+                logger->info("  GameOptions.List() - List all option names");
+            }
+            else if (cmd == "Override")
+            {
+                logger->info("Override(typeName, functionName, function) - Override a game function.");
+            }
+            else if (cmd == "ObserveBefore" || cmd == "ObserveAfter" || cmd == "Observe")
+            {
+                logger->info("ObserveBefore/ObserveAfter/Observe(typeName, functionName, function) - Hook a game function before/after execution.");
+            }
+            else if (cmd == "NewProxy")
+            {
+                logger->info("NewProxy(spec) - Create a native proxy object.");
+            }
+            else if (cmd == "NewObject")
+            {
+                logger->info("NewObject(typeName) - Create a new game object instance.");
+            }
+            else if (cmd == "GetSingleton")
+            {
+                logger->info("GetSingleton(typeName) - Get a singleton instance by type name.");
+            }
+            else if (cmd == "GetMod")
+            {
+                logger->info("GetMod(name) - Get a loaded mod by name.");
+            }
+            else if (cmd == "GameDump" || cmd == "Dump")
+            {
+                logger->info("GameDump(type) / Dump(type, detailed) - Dump type information.");
+            }
+            else if (cmd == "DumpType")
+            {
+                logger->info("DumpType(typeName, detailed) - Dump type information by name.");
+            }
+            else if (cmd == "DumpAllTypeNames")
+            {
+                logger->info("DumpAllTypeNames() - Dump all registered type names.");
+            }
+            else if (cmd == "TweakDB")
+            {
+                logger->info("TweakDB - TweakDB management:");
+                logger->info("  TweakDB:GetRecord(path) - Get a TweakDB record");
+                logger->info("  TweakDB:SetFlat(path, value) - Set a flat value");
+                logger->info("  TweakDB:Query(query) - Query records");
+                logger->info("  TweakDB:Update(record) - Update a record");
+            }
+            else if (cmd == "Game")
+            {
+                logger->info("Game - Access to game systems via __Game metatable.");
+            }
+            else
+            {
+                logger->info("Unknown command: {}. Type help() for list of commands.", cmd);
+            }
+        }
+        else
+        {
+            logger->info("=== CET Console Commands ===");
+            logger->info("help([command]) - Show this help or detailed help for a command");
+            logger->info("");
+            logger->info("System:");
+            logger->info("  GetVersion() - Get CET version");
+            logger->info("  GetDisplayResolution() - Get display resolution");
+            logger->info("  ModArchiveExists(name) - Check if mod archive exists");
+            logger->info("");
+            logger->info("Game Interaction:");
+            logger->info("  Game - Access game systems");
+            logger->info("  GetSingleton(typeName) - Get singleton instance");
+            logger->info("  NewObject(typeName) - Create new object");
+            logger->info("  NewProxy(spec) - Create native proxy");
+            logger->info("  GetMod(name) - Get loaded mod");
+            logger->info("");
+            logger->info("Hooking & Overrides:");
+            logger->info("  Override(type, func, fn) - Override function");
+            logger->info("  ObserveBefore(type, func, fn) - Hook before");
+            logger->info("  ObserveAfter(type, func, fn) - Hook after");
+            logger->info("  Observe(type, func, fn) - Alias for ObserveBefore");
+            logger->info("");
+            logger->info("Type Inspection:");
+            logger->info("  Dump(type, detailed) - Dump type info");
+            logger->info("  DumpType(name, detailed) - Dump type by name");
+            logger->info("  DumpAllTypeNames() - List all types");
+            logger->info("  GameDump(type) - Alias for Dump");
+            logger->info("  IsDefined(ref) - Check weak ref validity");
+            logger->info("  EnumInt(enum) - Get enum integer value");
+            logger->info("");
+            logger->info("Game Options:");
+            logger->info("  GameOptions.Print/Get/Set/Toggle/Dump/List");
+            logger->info("");
+            logger->info("TweakDB:");
+            logger->info("  TweakDB:GetRecord/SetFlat/Query/Update");
+            logger->info("");
+            logger->info("Math Types:");
+            logger->info("  Vector3/4, EulerAngles, Quaternion, CName, TweakDBID, ItemID, CRUID, LocKey");
+            logger->info("");
+            logger->info("Type 'help(\"command\")' for detailed help on a specific command.");
+        }
+    };
+
     // load mods
     m_store.LoadAll();
 }
