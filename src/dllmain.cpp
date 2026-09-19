@@ -23,7 +23,7 @@ static void Initialize()
         const auto& options = CET::Get().GetOptions();
 
         // single instance check
-        s_modInstanceMutex = CreateMutex(nullptr, TRUE, TEXT("Cyber Engine Tweaks Module Instance"));
+        s_modInstanceMutex = CreateMutex(nullptr, TRUE, TEXT("Estalingrado Corp Netrunner Console Module Instance"));
         if (s_modInstanceMutex == nullptr)
             return;
 
