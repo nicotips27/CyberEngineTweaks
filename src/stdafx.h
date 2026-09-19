@@ -29,13 +29,13 @@
 #include <RED4ext/Scripting/Natives/ScriptGameInstance.hpp>
 #include <RED4ext/TweakDB.hpp>
 
-#include <TiltedCore/Allocator.hpp>
-#include <TiltedCore/Lockable.hpp>
-#include <TiltedCore/Platform.hpp>
-#include <TiltedCore/ScratchAllocator.hpp>
-#include <TiltedCore/Signal.hpp>
-#include <TiltedCore/StackAllocator.hpp>
-#include <TiltedCore/TaskQueue.hpp>
+#include <Allocator.hpp>
+#include <Lockable.hpp>
+#include <Platform.hpp>
+#include <ScratchAllocator.hpp>
+#include <Signal.hpp>
+#include <StackAllocator.hpp>
+#include <TaskQueue.hpp>
 
 #include <tchar.h>
 #include <d3d12.h>

@@ -27,26 +27,23 @@ end
 set_symbols("debug")
 set_runtimes(is_mode("release") and "MD" or "MDd");
 
-add_requireconfs("**", { configs = {
-    --debug = is_mode("debug"), -- This seems to cause compilation issues recently and probably has little benefit anyway
-    lto = not is_mode("debug"),
-    shared = false,
-    vs_runtime = is_mode("release") and "MD" or "MDd" } })
+-- add_requireconfs("mimalloc", { configs = { rltgenrandom = true } })
+-- add_requireconfs("**", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
 
-add_requires("spdlog 1.11.0")
-add_requires("nlohmann_json")
-add_requires("hopscotch-map")
-add_requires("minhook")
-add_requires("mem")
-add_requires("tiltedcore 0.2.7")
-add_requires("sqlite3")
-add_requires("xbyak")
-add_requires("stb")
-add_requires("sol2", { configs = { includes_lua = false } })
-add_requires("openrestry-luajit", { configs = { gc64 = true } })
-
+add_requires("spdlog 1.11.0", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
+add_requires("nlohmann_json", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
+add_requires("hopscotch-map", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
+add_requires("minhook", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
+add_requires("mem", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
+add_requires("mimalloc 2.2.4", { configs = { rltgenrandom = true, lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
+-- add_requires("tiltedcore 0.2.7", { repo = "xmake-repo-old" }) -- disabled due to xmake version incompatibility
+add_requires("sqlite3", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
+add_requires("xbyak", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
+add_requires("stb", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
+add_requires("sol2", { configs = { includes_lua = false, lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
 local imguiUserConfig = string.gsub(path.absolute("src/imgui_impl/imgui_user_config.h"), "\\", "/")
-add_requires("imgui v1.91.1-docking", { configs = { wchar32 = true, freetype = true, user_config = imguiUserConfig } })
+add_requires("openrestry-luajit", { configs = { gc64 = true, lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
+add_requires("imgui v1.91.1-docking", { configs = { wchar32 = true, freetype = true, user_config = imguiUserConfig, lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
 
 target("RED4ext.SDK")
     set_kind("headeronly")
@@ -54,6 +51,8 @@ target("RED4ext.SDK")
     add_headerfiles("vendor/RED4ext.SDK/include/**.hpp")
     add_includedirs("vendor/RED4ext.SDK/include/", { public = true })
     on_install(function() end)
+
+includes("vendor/tiltedcore/xmake.lua")
 
 target("estalingrado_corp_netrunner_console")
     add_defines("WIN32_LEAN_AND_MEAN", "NOMINMAX", "WINVER=0x0601", "SOL_ALL_SAFETIES_ON", "SOL_LUAJIT=1", "SOL_EXCEPTIONS_SAFE_PROPAGATION", "SPDLOG_WCHAR_TO_UTF8_SUPPORT", "SPDLOG_WCHAR_FILENAMES", "SPDLOG_WCHAR_SUPPORT", "IMGUI_USER_CONFIG=\""..imguiUserConfig.."\"") -- WINVER=0x0601 == Windows 7xmake
@@ -65,10 +64,10 @@ target("estalingrado_corp_netrunner_console")
 
     add_files("src/**.cpp", "src/**.rc")
     add_headerfiles("src/**.h")
-    add_includedirs("src/", "build/")
+    add_includedirs("src/", "build/", "vendor/tiltedcore/Code/core/include")
     add_syslinks("User32", "Version", "d3d11", "dxgi")
-    add_packages("spdlog", "nlohmann_json", "minhook", "hopscotch-map", "imgui", "mem", "sol2", "tiltedcore", "sqlite3", "openrestry-luajit", "xbyak", "stb")
-    add_deps("RED4ext.SDK")
+    add_packages("spdlog", "nlohmann_json", "minhook", "hopscotch-map", "imgui", "mem", "sol2", "sqlite3", "openrestry-luajit", "xbyak", "stb", "mimalloc")
+    add_deps("RED4ext.SDK", "TiltedCore")
 
     -- Set up basic config variables.
     -- Required for us to set up something here first to be able to access and modify "configvars"
