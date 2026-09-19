@@ -259,6 +259,10 @@ void Scripting::Initialize()
             {
                 logger->info("Game - Access to game systems via __Game metatable.");
             }
+            else if (cmd == "trucos")
+            {
+                logger->info("trucos - Show all available cheats/tips.");
+            }
             else
             {
                 logger->info("Unknown command: {}. Type help() for list of commands.", cmd);

@@ -108,7 +108,7 @@ void Console::OnUpdate()
             // Auto-append () for known commands without parentheses
             static const std::vector<std::string> s_knownCommands = {
                 "help", "GetVersion", "GetDisplayResolution", "ModArchiveExists",
-                "DumpAllTypeNames", "ReloadAllMods"
+                "DumpAllTypeNames", "ReloadAllMods", "trucos"
             };
             std::string command = m_command;
             bool hasParens = command.find('(') != std::string::npos;
