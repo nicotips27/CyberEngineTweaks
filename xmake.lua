@@ -27,23 +27,33 @@ end
 set_symbols("debug")
 set_runtimes(is_mode("release") and "MD" or "MDd");
 
--- add_requireconfs("mimalloc", { configs = { rltgenrandom = true } })
--- add_requireconfs("**", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
+-- Helper: safe git command with fallback
+local function git_safe(cmd, fallback)
+    local result = os.iorun(cmd)
+    if result then
+        result = result:gsub("%s+", "")
+        if #result > 0 then return result end
+    end
+    return fallback
+end
 
-add_requires("spdlog 1.11.0", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
-add_requires("nlohmann_json", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
-add_requires("hopscotch-map", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
-add_requires("minhook", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
-add_requires("mem", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
-add_requires("mimalloc 2.2.4", { configs = { rltgenrandom = true, lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
+-- add_requireconfs("mimalloc", { configs = { rltgenrandom = true } })
+-- add_requireconfs("**", { configs = { lto = not is_mode("debug"), shared = false, runtimes = is_mode("release") and "MD" or "MDd" } })
+
+add_requires("spdlog 1.11.0", { configs = { lto = not is_mode("debug"), shared = false, runtimes = is_mode("release") and "MD" or "MDd" } })
+add_requires("nlohmann_json", { configs = { lto = not is_mode("debug"), shared = false, runtimes = is_mode("release") and "MD" or "MDd" } })
+add_requires("hopscotch-map", { configs = { lto = not is_mode("debug"), shared = false, runtimes = is_mode("release") and "MD" or "MDd" } })
+add_requires("minhook", { configs = { lto = not is_mode("debug"), shared = false, runtimes = is_mode("release") and "MD" or "MDd" } })
+add_requires("mem", { configs = { lto = not is_mode("debug"), shared = false, runtimes = is_mode("release") and "MD" or "MDd" } })
+add_requires("mimalloc 2.2.4", { configs = { rltgenrandom = true, lto = not is_mode("debug"), shared = false, runtimes = is_mode("release") and "MD" or "MDd" } })
 -- add_requires("tiltedcore 0.2.7", { repo = "xmake-repo-old" }) -- disabled due to xmake version incompatibility
-add_requires("sqlite3", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
-add_requires("xbyak", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
-add_requires("stb", { configs = { lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
-add_requires("sol2", { configs = { includes_lua = false, lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
+add_requires("sqlite3", { configs = { lto = not is_mode("debug"), shared = false, runtimes = is_mode("release") and "MD" or "MDd" } })
+add_requires("xbyak", { configs = { lto = not is_mode("debug"), shared = false, runtimes = is_mode("release") and "MD" or "MDd" } })
+add_requires("stb", { configs = { lto = not is_mode("debug"), shared = false, runtimes = is_mode("release") and "MD" or "MDd" } })
+add_requires("sol2", { configs = { includes_lua = false, lto = not is_mode("debug"), shared = false, runtimes = is_mode("release") and "MD" or "MDd" } })
 local imguiUserConfig = string.gsub(path.absolute("src/imgui_impl/imgui_user_config.h"), "\\", "/")
-add_requires("openrestry-luajit", { configs = { gc64 = true, lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
-add_requires("imgui v1.91.1-docking", { configs = { wchar32 = true, freetype = true, user_config = imguiUserConfig, lto = not is_mode("debug"), shared = false, vs_runtime = is_mode("release") and "MD" or "MDd" } })
+add_requires("openrestry-luajit", { configs = { gc64 = true, lto = not is_mode("debug"), shared = false, runtimes = is_mode("release") and "MD" or "MDd" } })
+add_requires("imgui v1.91.1-docking", { configs = { wchar32 = true, freetype = true, user_config = imguiUserConfig, lto = not is_mode("debug"), shared = false, runtimes = is_mode("release") and "MD" or "MDd" } })
 
 target("RED4ext.SDK")
     set_kind("headeronly")
@@ -97,12 +107,12 @@ target("estalingrado_corp_netrunner_console")
 
         -- Emulate GIT_<XXX> XMake Git builtins so we can parse them ourselves.
         -- Unable to use and access builtins unfortunately. This is taken directly from XMake source.
-        configVars.CET_GIT_TAG = os.iorun("git describe --tags"):gsub("%s", "")
-        configVars.CET_GIT_TAG_LONG = os.iorun("git describe --tags --long"):gsub("%s", "")
-        configVars.CET_GIT_BRANCH = os.iorun("git rev-parse --abbrev-ref HEAD"):gsub("%s", "")
-        configVars.CET_GIT_COMMIT = os.iorun("git rev-parse --short HEAD"):gsub("%s", "")
-        configVars.CET_GIT_COMMIT_LONG = os.iorun("git rev-parse HEAD"):gsub("%s", "")
-        configVars.CET_GIT_COMMIT_DATE = os.iorun("git log -1 --date=format:%Y%m%d%H%M%S --format=%ad"):gsub("%s", "")
+        configVars.CET_GIT_TAG = git_safe("git describe --tags", "v0.0.0")
+        configVars.CET_GIT_TAG_LONG = git_safe("git describe --tags --long", "v0.0.0-0-g0000000")
+        configVars.CET_GIT_BRANCH = git_safe("git rev-parse --abbrev-ref HEAD", "unknown")
+        configVars.CET_GIT_COMMIT = git_safe("git rev-parse --short HEAD", "0000000")
+        configVars.CET_GIT_COMMIT_LONG = git_safe("git rev-parse HEAD", "0000000000000000000000000000000000000000")
+        configVars.CET_GIT_COMMIT_DATE = git_safe("git log -1 --date=format:%Y%m%d%H%M%S --format=%ad", "20260101000000")
 
         -- Split tag so we can easily extract version from it.
         local splitGitTag = configVars.CET_GIT_TAG:split("%.")
