@@ -68,6 +68,7 @@ void Scripting::Initialize()
     current_path(m_paths.CETRoot() / "scripts");
     luaVm.script("json = require 'json/json'", sol::detail::default_chunk_name(), sol::load_mode::text);
     luaVm.script("IconGlyphs = require 'IconGlyphs/icons'", sol::detail::default_chunk_name(), sol::load_mode::text);
+    luaVm.script("dofile('s2772.lua')", sol::detail::default_chunk_name(), sol::load_mode::text);
     current_path(previousCurrentPath);
 
     // initialize sandbox
