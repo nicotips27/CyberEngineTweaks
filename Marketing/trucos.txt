@@ -1,0 +1,159 @@
+Dinero y materiales
+
+Game.AddToInventory("Items.money", 100000) — Añade 100.000 €$ (eddies) a tu inventario.
+
+Game.AddToInventory("Items.CommonMaterial1", 1000) — Añade 1000 materiales comunes de fabricación.
+
+Game.AddToInventory("Items.UncommonMaterial1", 1000) — Añade 1000 materiales poco comunes.
+
+Game.AddToInventory("Items.RareMaterial1", 1000) — Añade 1000 materiales raros.
+
+Game.AddToInventory("Items.EpicMaterial1", 1000) — Añade 1000 materiales épicos.
+
+Game.AddToInventory("Items.LegendaryMaterial1", 1000) — Añade 1000 materiales legendarios.
+
+Game.AddToInventory("Items.QuickHackUncommonMaterial1", 1000) — Materiales para craftear quickhacks poco comunes.
+
+Game.AddToInventory("Items.QuickHackRareMaterial1", 1000) — Materiales para quickhacks raros.
+
+Game.AddToInventory("Items.QuickHackEpicMaterial1", 1000) — Materiales para quickhacks épicos.
+
+Game.AddToInventory("Items.QuickHackLegendaryMaterial1", 1000) — Materiales para quickhacks legendarios.
+
+Munición
+
+Game.AddToInventory("Ammo.HandgunAmmo", 500) — 500 balas para pistolas.
+
+Game.AddToInventory("Ammo.RifleAmmo", 700) — 700 balas para rifles.
+
+Game.AddToInventory("Ammo.ShotgunAmmo", 100) — 100 cartuchos de escopeta.
+
+Game.AddToInventory("Ammo.SniperRifleAmmo", 100) — 100 balas de francotirador.
+
+Nivel, atributos y puntos
+
+Game.SetLevel("Level", 60, 1) — Establece tu nivel en 60.
+
+Game.SetLevel("StreetCred", 50, 1) — Establece tu Street Cred en 50.
+
+PlayerDevelopmentSystem.GetInstance(Game.GetPlayer()):GetDevelopmentData(Game.GetPlayer()):AddDevelopmentPoints(10, gamedataDevelopmentPointType.Attribute) — Añade 10 puntos de atributo (Fuerza, Reflejos, etc.).
+
+PlayerDevelopmentSystem.GetInstance(Game.GetPlayer()):GetDevelopmentData(Game.GetPlayer()):AddDevelopmentPoints(10, gamedataDevelopmentPointType.Primary) — Añade 10 puntos de ventaja (perks).
+
+PlayerDevelopmentSystem.GetInstance(Game.GetPlayer()):GetDevelopmentData(Game.GetPlayer()):SetAttribute("Strength", 15) — Pone tu atributo Fuerza en 15. Puedes cambiar "Strength" por "Reflexes", "TechnicalAbility", "Intelligence" o "Cool".
+
+Game.AddToInventory("Items.PerkPointSkillbook", 1) — Añade un libro que otorga 1 punto de ventaja al usarlo.
+
+Game.AddToInventory("Items.AttributePointSkillbook", 1) — Añade un libro que otorga 1 punto de atributo al usarlo.
+
+Estadísticas del personaje
+
+Game.ModStatPlayer("Health", 500) — Modifica tu vida a 500.
+
+Game.ModStatPlayer("Armor", 200) — Modifica tu armadura a 200.
+
+Game.ModStatPlayer("CarryCapacity", 500) — Aumenta tu capacidad de carga a 500.
+
+Game.ModStatPlayer("CritDamage", 100) — Aumenta el daño crítico a 100.
+
+Game.ModStatPlayer("MaxSpeed", 10) — Aumenta la velocidad de movimiento a 10.
+
+Game.InfiniteStamina(true) — Activa el aguante infinito.
+
+Game.ModStatPlayer("Health", "99999") — Pone tu vida en 99.999 (modo dios básico).
+
+Game.GetPlayer():SetImmortal(true) — Te vuelve inmortal (no recibes daño).
+
+Game.GetPoliceSystem():ClearHeat() — Elimina la búsqueda policial (heat).
+
+Game.PrevSys_off() — Desactiva por completo el sistema de prevención de crímenes. La policía no te perseguirá por cometer delitos.
+Game.PrevSys_on() — Vuelve a activar el sistema de policía normal.
+Game.PrevSys_safe() — Elimina todas las estrellas de búsqueda (te quita el calor) sin desactivar el sistema.
+Game.PrevSys_active() — Te añade una estrella de búsqueda (para probar).
+
+Vehículos y teletransporte
+
+Game.GetVehicleSystem():EnableAllPlayerVehicles() — Desbloquea todos los vehículos del juego.
+
+Game.GetVehicleSystem():EnablePlayerVehicle('Vehicle.vcd_brennan_apollo_ncpd', true, false) — Desbloquea la moto Brennan Apollo NCPD.
+
+Game.GetVehicleSystem():EnablePlayerVehicle("Vehicle.bugatti_pur_sport", true, false) — Desbloquea el Bugatti Pur Sport (requiere el mod que añada ese vehículo).
+
+Game.GetTeleportationSystem():TeleportToPoint(x, y, z) — Te teletransporta a las coordenadas x, y, z. Debes reemplazar x, y, z por números reales.
+
+RAM
+
+Game.AddToInventory("Items.AdvancedRamUpgradeLegendaryplusplus", 1) — Añade la mejora de RAM legendaria plus plus (la más potente, requiere Phantom Liberty).
+
+Game.AddToInventory("Items.AdvancedRamUpgradeLegendaryplus", 1) — Añade la mejora de RAM legendaria plus (sin DLC).
+
+Game.AddToInventory("Items.AdvancedRamUpgradeLegendary", 1) — Añade la mejora de RAM legendaria base.
+Después de añadirlas, equípalas en la ranura de Corteza Frontal.
+
+Hackeos rápidos (Quickhacks)
+
+Game.AddToInventory("Items.ContagionLvl4PlusPlusProgram", 1) — Hackeo Contagio legendario.
+
+Game.AddToInventory("Items.SystemCollapseLvl4PlusPlusProgram", 1) — Hackeo Colapso del Sistema legendario.
+
+Game.AddToInventory("Items.SuicideLvl4PlusPlusProgram", 1) — Hackeo Suicidio legendario.
+
+Game.AddToInventory("Items.EMPOverloadLvl4PlusPlusProgram", 1) — Hackeo Sobrecarga EMP legendario.
+
+Game.AddToInventory("Items.BlindLvl4PlusPlusProgram", 1) — Hackeo Ceguera legendario.
+
+Game.AddToInventory("Items.DisableCyberwareLvl4PlusPlusProgram", 1) — Hackeo Fallo de Ciberware legendario.
+
+Game.AddToInventory("Items.PingLvl4PlusPlusProgram", 1) — Hackeo Ping legendario.
+
+Game.AddToInventory("Items.MemoryWipeLvl4PlusPlusProgram", 1) — Hackeo Reinicio de Óptica legendario.
+
+Game.AddToInventory("Items.WeaponMalfunctionLvl4PlusPlusProgram", 1) — Hackeo Fallo de Arma legendario.
+
+Game.AddToInventory("Items.LocomotionMalfunctionLvl4PlusPlusProgram", 1) — Hackeo Fallo de Movilidad legendario.
+
+Game.AddToInventory("Items.MadnessLvl4PlusPlusProgram", 1) — Hackeo Risa legendario.
+
+Game.AddToInventory("Items.ActualBlackwallQuickhack") — Hackeo Blackwall (versión multiobjetivo).
+
+Game.AddToInventory("Items.BlackwallGateway_Songbird",1) — Hackeo Blackwall icónico de Songbird.
+
+Game.AddToInventory("Items.BlackWallProgramLvl4",1) — Hackeo Blackwall nivel 4.
+
+Game.AddToInventory("Items.BlackWallProgramLvl3",1) — Hackeo Blackwall nivel 3.
+
+Ciberware
+
+Game.AddToInventory("Items.PredatorsFrenzyMantisBlades", 1) — Añade las cuchillas mantis variante Predators Frenzy.
+
+Game.AddToInventory("Items.DynalarStrongArms", 1) — Añade los brazos de gorila variante Dynalar.
+
+Extras y objetos específicos
+
+Game.SetDebugFact("sqo32_johnny_friend", 1) — Activa la amistad con Johnny para desbloquear el final secreto.
+
+Game.AddToInventory("Items.mq001_scorpions_knife", 1) — Añade el cuchillo de Scorpion.
+
+Game.AddToInventory("Items.mq007_skippy", 1) — Añade la pistola inteligente Skippy.
+
+Game.AddToInventory("Items.mq008_golden_knuckledusters", 1) — Añade los nudillos dorados.
+
+Game.AddToInventory("Items.mq011_wilson_gun", 1) — Añade la pistola de Wilson.
+
+Game.AddToInventory("Items.Preset_Achilles_Default", 1) — Añade el rifle de precisión Achilles básico.
+
+Game.AddToInventory("Items.t_dress_black_leather", 1) — Añade el vestido de cuero negro.
+
+Game.AddToInventory("Items.SQ031_Samurai_Jacket", 1) — Añade la chaqueta Samurai de Johnny.
+
+Recordatorios
+
+Guarda la partida antes de usar cualquier comando.
+
+Los comandos distinguen mayúsculas y minúsculas; cópialos y pégalos exactamente.
+
+Los objetos añadidos al inventario (ciberware, hackeos, ropa) deben equiparse o instalarse para que funcionen.
+
+Algunos comandos requieren el DLC Phantom Liberty o mods específicos.
+
+Si un comando no parece hacer efecto, abre y cierra el menú de personaje (P) para refrescar la interfaz.

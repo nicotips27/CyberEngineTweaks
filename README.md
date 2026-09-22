@@ -52,6 +52,7 @@ Escribe **`trucos`** en la consola para ver la lista completa de todos los truco
 - **Munición / Ammo** — Balas para pistolas, rifles, escopeta, francotirador
 - **Nivel, atributos y puntos / Level, Attributes & Points** — Nivel 60, Street Cred, puntos de atributo y perk
 - **Estadísticas del personaje / Character Stats** — Vida, armadura, capacidad de carga, daño crítico, velocidad, aguante infinito, modo dios, inmortal, eliminar heat
+- **Sistema de policía / Police System** — `Game.PrevSys_off()`, `Game.PrevSys_on()`, `Game.PrevSys_safe()`, `Game.PrevSys_active()`
 - **Vehículos y teletransporte / Vehicles & Teleport** — Todos los vehículos, vehículos específicos, teletransporte a coordenadas
 - **RAM / RAM** — Mejoras de RAM legendaria
 - **Hackeos rápidos / Quickhacks** — Contagio, Colapso del Sistema, Suicidio, EMP, Ceguera, Blackwall, etc.
