@@ -93,6 +93,8 @@ Escribe **`trucos`** en la consola para ver la lista completa de todos los truco
 
 You first need to install [RED4ext](https://github.com/WopsS/RED4ext).
 
+⚠️ **Importante:** El instalador **no incluye** `version.dll` para evitar conflictos con la que ya tiene tu juego. Si el juego ya tiene `version.dll` en `bin\x64/`, no la sobreescribas. Si necesitas instalarla manualmente, hazlo solo si el juego te da error al iniciar sin ella.
+
 [Read the wiki](https://wiki.redmodding.org/cyber-engine-tweaks/)
 
 [Official mod examples](https://github.com/WolvenKit/cet-examples)
