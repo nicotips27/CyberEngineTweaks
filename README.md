@@ -1,5 +1,11 @@
 # Estalingrado Corp Netrunner Console
 
+## 📥 Descarga / Download
+
+[![Instalador](https://img.shields.io/badge/%F0%9F%93%86%20Instalador-EstalingradoCorp--Setup.exe-success?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/nicotips27/CyberEngineTweaks/releases/download/v1.0.0-installer/EstalingradoCorp-Setup.exe)
+
+> **Instalador con interfaz gráfica** — Detecta automáticamente la instalación de Cyberpunk 2077. No requiere internet.
+
 [![Website](https://img.shields.io/badge/Website-estalingradocorp.qzz.io-blue)](https://estalingradocorp.qzz.io/)
 [![Telegram](https://img.shields.io/badge/Telegram-t.me/estalingradocorp-blue)](https://t.me/estalingradocorp)
 [![Banner](https://img.shields.io/badge/Banner-view-orange)](https://64.media.tumblr.com/c543648ec88ebbd6ad0a042b7c9c02e5/6b32caad034b7a6d-f3/s640x960/1b2b2cd1fb6e7f84f6a6f9f205cc8f12e9b40531.pnj)
