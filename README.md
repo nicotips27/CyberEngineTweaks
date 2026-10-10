@@ -80,6 +80,19 @@ Escribe **`trucos`** en la consola para ver la lista completa de todos los truco
 | Disable Boundary Teleport | Allows players to access out-of-bounds locations |
 | Disable Windows 7 VSync | Disables VSync on Windows 7 to bypass the 60 FPS limit |
 
+### 🎨 Efectos Visuales / Visual Effects
+
+Estos efectos están ahora activados por defecto en la instalación reciente:
+
+| Efecto | Descripción | Cómo activar/desactivar |
+|--------|-------------|------------------------|
+| **ImGui Diagnostics Window** | Muestra la ventana de diagnóstico interno de ImGui para depurar mods | Configuración en juego: `trucos` → `Draw ImGui Diagnostics Window` |
+| **Remove Dead Bindings** | Quita enlaces de bindings muertos para mods no cargados | Configuración en juego: `trucos` → `Remove Dead Bindings` |
+| **Debug Menu** | Menú de depuración con opciones adicionales | Configuración en juego: `trucos` → `Debug Menu` |
+| **Tweaks de Rendimiento** | Parches opcionales de rendimiento (SMT, Async Compute, etc.) | Modificables en `global.ini` |
+
+Estos efectos mejoran la estabilidad y depuración del mod. Si deseas desactivar alguno, edita `global.ini` y cambia el valor de `1` a `0` en la línea correspondiente.
+
 ### Current mod development options
 | Development      | Description     |
 | :------------- | :------------------------------ |
